@@ -12,9 +12,9 @@ import sys
 import util 
 import unittest
 
-A  = util.Adb()
-SM = util.SetMode()
-TB = util.TouchButton()
+a  = util.Adb()
+sm = util.SetMode()
+tb = util.TouchButton()
 #Written by Piao chengguo
 
 # PATH
@@ -51,7 +51,7 @@ class CameraTest(unittest.TestCase):
                 3.Exit  activity
         """
     #step 1
-        SM.switchcamera('perfectshot')
+        sm.switchcamera('perfectshot')
         d.expect('perfectshot.png')
     #step 2	
         for i in range(200):
@@ -68,7 +68,7 @@ class CameraTest(unittest.TestCase):
                 3.Exit  activity
         """
     #step 1
-        SM.switchcamera('panorama')
+        sm.switchcamera('panorama')
         d.expect('panorama.png')
     #step 2
         for i in range(200):
@@ -85,10 +85,10 @@ class CameraTest(unittest.TestCase):
 
         """
     #step 1    
-        SM.setCameraSetting('single',4,2)
+        sm.setCameraSetting('single',4,2)
         assert bool(a.cmd('cat',PATH + PICTURE_SIZE_KEY).find('StandardScreen')+1)
     #step 2
-        TB.switchBackOrFrontCamera('back')
+        tb.switchBackOrFrontCamera('back')
     #step 3
         for i in range(500):
             self._checkCapturedPic()
@@ -103,10 +103,10 @@ class CameraTest(unittest.TestCase):
         8M pixels, back camera
         """
     #step 1
-        SM.setCameraSetting('smile',2,2)
+        sm.setCameraSetting('smile',2,2)
         d.expect('smile.png')
     #step 2
-        TB.switchBackOrFrontCamera('back')
+        tb.switchBackOrFrontCamera('back')
     #step 3
         for i in range(500):
             self._checkCapturedPic()
@@ -121,12 +121,12 @@ class CameraTest(unittest.TestCase):
         Video size 720P
         """
     #step 1
-        SM.switchcamera('video')
-        SM.setCameraSetting('video',3,2)
+        sm.switchcamera('video')
+        sm.setCameraSetting('video',3,2)
         d.expect('video.png')
     #step 2	
         for i in range (500):
-            TB.takeVideo(5)
+            tb.takeVideo(5)
             time.sleep(1)	
 
 
@@ -138,14 +138,14 @@ class CameraTest(unittest.TestCase):
 
         """
     #step 1
-        SM.switchcamera('video')
-        SM.setCameraSetting('video',3,1)
+        sm.switchcamera('video')
+        sm.setCameraSetting('video',3,1)
         d.expect('video.png')
     #step 2	
         for i in range (500):
-        	TB.takeVideo(5)
+        	tb.takeVideo(5)
         	time.sleep(1)	
-        SM.setCameraSetting('video',3,2)
+        sm.setCameraSetting('video',3,2)
 
 # Test Case 24
     def testcaseBurstImage8M200Times(self):
@@ -155,11 +155,11 @@ class CameraTest(unittest.TestCase):
         """
 
     #step 1
-        SM.setCameraSetting('burstfast',2,2)
+        sm.setCameraSetting('burstfast',2,2)
         d.expect('burst.png') 
         assert bool(a.cmd('cat',PATH + PICTURE_SIZE_KEY).find('StandardScreen')+1)
     #step 2	
-        TB.switchBackOrFrontCamera('back')
+        tb.switchBackOrFrontCamera('back')
     #step 3
         for i in range(200):
             self._checkCapturedPic()
@@ -173,16 +173,16 @@ class CameraTest(unittest.TestCase):
     ############################################################################################################
 
     def _checkCapturedPic(self):
-        beforeNo = A.cmd('ls','/sdcard/DCIM/100ANDRO') #Get count before capturing
-        TB.takePicture('single')
-        afterNo = A.cmd('ls','/sdcard/DCIM/100ANDRO') #Get count after taking picture
+        beforeNo = a.cmd('ls','/sdcard/DCIM/100ANDRO') #Get count before capturing
+        tb.takePicture('single')
+        afterNo = a.cmd('ls','/sdcard/DCIM/100ANDRO') #Get count after taking picture
         if beforeNo == afterNo: #If the count does not raise up after capturing, case failed
             self.fail('Taking picture failed!')
 
     def _PanoramaCapturePic(self):
-        beforeNo = A.cmd('ls','/sdcard/DCIM/100ANDRO') #Get count before capturing
-        TB.takePicture('smile')
-        afterNo = A.cmd('ls','/sdcard/DCIM/100ANDRO') #Get count after taking picture
+        beforeNo = a.cmd('ls','/sdcard/DCIM/100ANDRO') #Get count before capturing
+        tb.takePicture('smile')
+        afterNo = a.cmd('ls','/sdcard/DCIM/100ANDRO') #Get count after taking picture
         if beforeNo == afterNo: #If the count does not raise up after capturing, case failed
             self.fail('Taking picture failed!')
     

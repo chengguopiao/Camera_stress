@@ -103,6 +103,7 @@ class CameraTest(unittest.TestCase):
         8M pixels, back camera
         """
     #step 1
+        sm.switchcamera('smile')
         sm.setCameraSetting('smile',2,2)
         d.expect('smile.png')
     #step 2
@@ -155,6 +156,7 @@ class CameraTest(unittest.TestCase):
         """
 
     #step 1
+        sm.switchcamera('burstfast')
         sm.setCameraSetting('burstfast',2,2)
         d.expect('burst.png') 
         assert bool(a.cmd('cat',PATH + PICTURE_SIZE_KEY).find('StandardScreen')+1)

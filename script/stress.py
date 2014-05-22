@@ -83,6 +83,8 @@ class CameraTest(unittest.TestCase):
         ad.cmd('rm','/sdcard/DCIM/*')
         #Refresh media after delete files
         ad.cmd('refresh','/sdcard/DCIM/*')
+        if d(resourceId = 'com.android.keyguard:id/glow_pad_view').wait.exists(timeout = 3000):
+            d.swipe(366,905,666,905,steps=5) 
         #Launch social camera
         self._launchCamera()
 

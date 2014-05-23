@@ -365,7 +365,6 @@ class CameraTest(unittest.TestCase):
     #step 1
         sm.switchcamera('smile')
         sm.setCameraSetting('smile',2,2)
-        d.expect('smile.png')
     #step 2
         tb.switchBackOrFrontCamera('back')
     #step 3
@@ -418,7 +417,6 @@ class CameraTest(unittest.TestCase):
     #step 1
         sm.switchcamera('burstfast')
         sm.setCameraSetting('burst',2,2)
-        d.expect('burst.png') 
         assert bool(ad.cmd('cat',PATH + PICTURE_SIZE_KEY).find('StandardScreen')+1)
     #step 2 
         tb.switchBackOrFrontCamera('back')

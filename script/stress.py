@@ -89,6 +89,8 @@ class CameraTest(unittest.TestCase):
             time.sleep(2)
             ad.cmd('adb remount')
         #Launch social camera
+        self._ClearData()
+        time.sleep(2)
         self._launchCamera()
         time.sleep(2)
         tb.switchBackOrFrontCamera('back')
@@ -411,6 +413,7 @@ class CameraTest(unittest.TestCase):
             tb.takeVideo(5)
             time.sleep(1)   
         sm.setCameraSetting('video',3,2)
+        
 
     # Test Case 24
     def testcaseBurstImage8M200Times(self):
@@ -481,3 +484,9 @@ class CameraTest(unittest.TestCase):
         afterNo = ad.cmd('ls','/sdcard/DCIM/100ANDRO') #Get count after taking picture
         if beforeNo == afterNo: #If the count does not raise up after capturing, case failed
             self.fail('Taking picture failed!')
+    def _ClearData(self):
+        commands.getoutput('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///mnt/sdcard/')
+	    time.sleep(5)
+	    commands.getoutput('adb shell rm /mnt/sdcard/DCIM/100ANDRO/*')
+	    time.sleep(2)
+        commands.getoutput('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///mnt/sdcard/')

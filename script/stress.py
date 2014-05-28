@@ -90,6 +90,8 @@ class CameraTest(unittest.TestCase):
             ad.cmd('adb remount')
         #Launch social camera
         self._launchCamera()
+        time.sleep(2)
+        tb.switchBackOrFrontCamera('back')
 
     def tearDown(self):
         #ad.cmd('pm','com.intel.camera22') #Force reset the camera settings to default

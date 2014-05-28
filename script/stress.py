@@ -486,7 +486,7 @@ class CameraTest(unittest.TestCase):
             self.fail('Taking picture failed!')
     def _ClearData(self):
         commands.getoutput('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///mnt/sdcard/')
-	    time.sleep(5)
-	    commands.getoutput('adb shell rm /mnt/sdcard/DCIM/100ANDRO/*')
-	    time.sleep(2)
+	time.sleep(5)
+	commands.getoutput('adb shell rm /mnt/sdcard/DCIM/100ANDRO/*')
+	time.sleep(2)
         commands.getoutput('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///mnt/sdcard/')

@@ -7,6 +7,7 @@ import string
 import time
 import util
 import random
+import commands
 
 ad = util.Adb()
 tb = util.TouchButton()
@@ -485,8 +486,8 @@ class CameraTest(unittest.TestCase):
         if beforeNo == afterNo: #If the count does not raise up after capturing, case failed
             self.fail('Taking picture failed!')
     def _ClearData(self):
-        ad.cmd('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///mnt/sdcard/')
+        commands.getoutput('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///mnt/sdcard/')
 	time.sleep(5)
-	ad.cmd('adb shell rm /mnt/sdcard/DCIM/100ANDRO/*')
+	commands.getoutput('adb shell rm /mnt/sdcard/DCIM/100ANDRO/*')
 	time.sleep(2)
-        ad.cmd('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///mnt/sdcard/')
+        commands.getoutput('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///mnt/sdcard/')

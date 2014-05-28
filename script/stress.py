@@ -94,7 +94,9 @@ class CameraTest(unittest.TestCase):
     def tearDown(self):
         #ad.cmd('pm','com.intel.camera22') #Force reset the camera settings to default
         self._pressBack(4)
+        a.cmd('pm','com.intel.camera22')
         super(CameraTest,self).tearDown()
+        
     
     # Test case 1
     def testSwitchMode50Times(self):
@@ -386,7 +388,6 @@ class CameraTest(unittest.TestCase):
     #step 1
         sm.switchcamera('video')
         sm.setCameraSetting('video',3,2)
-        d.expect('video.png')
     #step 2 
         for i in range (500):
             tb.takeVideo(5)
@@ -403,7 +404,6 @@ class CameraTest(unittest.TestCase):
     #step 1
         sm.switchcamera('video')
         sm.setCameraSetting('video',3,1)
-        d.expect('video.png')
     #step 2 
         for i in range (500):
             tb.takeVideo(5)

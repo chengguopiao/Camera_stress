@@ -94,9 +94,10 @@ class CameraTest(unittest.TestCase):
         time.sleep(2)
         self._launchCamera()
         time.sleep(2)
-        tb.switchBackOrFrontCamera('back')
+
 
     def tearDown(self):
+    	tb.switchBackOrFrontCamera('back')
         #ad.cmd('pm','com.intel.camera22') #Force reset the camera settings to default
         self._pressBack(4)
         a.cmd('pm','com.intel.camera22')

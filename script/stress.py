@@ -363,7 +363,7 @@ class CameraTest(unittest.TestCase):
     #step 3
         for i in range(500):
             self._checkCapturedPic()
-            time.sleep(1)
+            time.sleep(2)
   
 
 
@@ -381,7 +381,7 @@ class CameraTest(unittest.TestCase):
     #step 3
         for i in range(500):
             self._PanoramaCapturePic()
-            time.sleep(1)
+            time.sleep(2)
 
 
     # Test Case 22
@@ -397,7 +397,7 @@ class CameraTest(unittest.TestCase):
     #step 2 
         for i in range (500):
             tb.takeVideo(5)
-            time.sleep(1)   
+            time.sleep(2)   
 
 
     # Test Case 23
@@ -413,7 +413,7 @@ class CameraTest(unittest.TestCase):
     #step 2 
         for i in range (500):
             tb.takeVideo(5)
-            time.sleep(1)   
+            time.sleep(2)   
         sm.setCameraSetting('video',3,2)
         
 
@@ -433,7 +433,7 @@ class CameraTest(unittest.TestCase):
     #step 3
         for i in range(200):
             self._checkCapturedPic()
-            time.sleep(1)
+            time.sleep(2)
 ############################################################################################################
 ##############################################################################################################
     def _confirmSettingMode(self,sub_mode,option):
